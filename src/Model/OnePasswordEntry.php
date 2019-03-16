@@ -35,7 +35,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
@@ -49,9 +49,9 @@ class OnePasswordEntry
     }
 
     /**
-     * @return OnePasswordDateTime
+     * @return \DateTime
      */
-    public function getUpdatedAt(): OnePasswordDateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -67,7 +67,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getLocationKey(): string
+    public function getLocationKey(): ?string
     {
         return $this->locationKey;
     }
@@ -83,7 +83,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getSecurityLevel(): string
+    public function getSecurityLevel(): ?string
     {
         return $this->securityLevel;
     }
@@ -99,7 +99,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getContentsHash(): string
+    public function getContentsHash(): ?string
     {
         return $this->contentsHash;
     }
@@ -115,7 +115,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -131,7 +131,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getLocation(): string
+    public function getLocation(): ?string
     {
         return $this->location;
     }
@@ -147,7 +147,7 @@ class OnePasswordEntry
     /**
      * @return OnePasswordSecureContents
      */
-    public function getSecureContents(): OnePasswordSecureContents
+    public function getSecureContents(): ?OnePasswordSecureContents
     {
         return $this->secureContents;
     }
@@ -161,9 +161,9 @@ class OnePasswordEntry
     }
 
     /**
-     * @return OnePasswordDateTime
+     * @return \DateTime
      */
-    public function getCreatedAt(): OnePasswordDateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -179,7 +179,7 @@ class OnePasswordEntry
     /**
      * @return string
      */
-    public function getTypeName(): string
+    public function getTypeName(): ?string
     {
         return $this->typeName;
     }

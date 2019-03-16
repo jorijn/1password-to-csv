@@ -21,7 +21,7 @@ class OnePasswordSecureContents
     /**
      * @return OnePasswordUrl[]
      */
-    public function getURLs(): array
+    public function getURLs(): ?array
     {
         return $this->URLs;
     }
@@ -41,7 +41,7 @@ class OnePasswordSecureContents
     /**
      * @return OnePasswordField[]
      */
-    public function getFields(): array
+    public function getFields(): ?array
     {
         return $this->fields;
     }
@@ -61,7 +61,7 @@ class OnePasswordSecureContents
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }

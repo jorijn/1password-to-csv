@@ -25,7 +25,7 @@ class OnePasswordField
     /**
      * @return string
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -45,7 +45,7 @@ class OnePasswordField
     /**
      * @return string
      */
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
@@ -65,7 +65,7 @@ class OnePasswordField
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -85,7 +85,7 @@ class OnePasswordField
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -105,7 +105,7 @@ class OnePasswordField
     /**
      * @return string
      */
-    public function getDesignation(): string
+    public function getDesignation(): ?string
     {
         return $this->designation;
     }

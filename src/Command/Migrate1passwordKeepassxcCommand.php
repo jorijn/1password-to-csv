@@ -12,6 +12,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class Migrate1passwordKeepassxcCommand extends Command
@@ -19,19 +20,14 @@ class Migrate1passwordKeepassxcCommand extends Command
     protected static $defaultName = 'migrate:1password:keepassxc';
 
     /**
-     * @var SerializerInterface
+     * @var SerializerInterface|DenormalizerInterface
      */
     protected $serializer;
-    /**
-     * @var GenericItemFactory
-     */
-    protected $itemFactory;
 
-    public function __construct($name = null, SerializerInterface $serializer, GenericItemFactory $itemFactory)
+    public function __construct($name = null, SerializerInterface $serializer)
     {
         parent::__construct($name);
         $this->serializer = $serializer;
-        $this->itemFactory = $itemFactory;
     }
 
     protected function configure()
@@ -52,14 +48,11 @@ class Migrate1passwordKeepassxcCommand extends Command
         /** @var OnePasswordEntry[] $entries */
         $entries = $this->serializer->deserialize(file_get_contents($inFile), OnePasswordEntry::class.'[]', '1pif');
 
-        // now use the generic item factory to convert these items to generic "secret" models
-        $entries = array_map(function (OnePasswordEntry $entry) {
-            return $this->itemFactory->create($entry);
-        }, $entries);
+        // TODO: turn into GenericEntry[]?
 
         // use the symfony serializer to turn this into csv
         $csv = $this->serializer->serialize($entries, 'csv');
 
-        dump($csv);
+//        dump($csv);
     }
 }

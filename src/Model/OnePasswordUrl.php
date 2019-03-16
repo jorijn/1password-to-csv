@@ -19,7 +19,7 @@ class OnePasswordUrl
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -39,7 +39,7 @@ class OnePasswordUrl
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
