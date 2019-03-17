@@ -9,7 +9,7 @@ class OnePasswordSection
     /** @var string */
     protected $name;
     /** @var OnePasswordSectionField[] */
-    protected $fields;
+    protected $fields = [];
 
     /**
      * @return string
@@ -46,7 +46,7 @@ class OnePasswordSection
     /**
      * @return OnePasswordSectionField[]
      */
-    public function getFields(): ?array
+    public function getFields(): array
     {
         return $this->fields;
     }
@@ -54,7 +54,7 @@ class OnePasswordSection
     /**
      * @param OnePasswordSectionField[] $fields
      */
-    public function setFields(array $fields = null): void
+    public function setFields(array $fields = []): void
     {
         $this->fields = $fields;
     }

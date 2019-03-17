@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: jorijn
  * Date: 3/16/19
- * Time: 6:24 PM
+ * Time: 6:24 PM.
  */
 
 namespace App\Model;
-
 
 class OnePasswordDateTime
 {

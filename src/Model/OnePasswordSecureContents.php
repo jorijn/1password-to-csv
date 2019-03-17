@@ -11,7 +11,7 @@ namespace App\Model;
 class OnePasswordSecureContents
 {
     /** @var OnePasswordUrl[] */
-    protected $URLs;
+    protected $URLs = [];
     /** @var OnePasswordField[] */
     protected $fields = [];
     /** @var string */
@@ -19,14 +19,14 @@ class OnePasswordSecureContents
     /** @var string */
     protected $reg_code;
     /** @var OnePasswordSection[] */
-    protected $sections;
+    protected $sections = [];
     /** @var string */
     protected $notesPlain;
 
     /**
      * @return OnePasswordUrl[]
      */
-    public function getURLs(): ?array
+    public function getURLs(): array
     {
         return $this->URLs;
     }
@@ -102,7 +102,7 @@ class OnePasswordSecureContents
     /**
      * @return OnePasswordSection[]
      */
-    public function getSections(): ?array
+    public function getSections(): array
     {
         return $this->sections;
     }
@@ -110,7 +110,7 @@ class OnePasswordSecureContents
     /**
      * @param OnePasswordSection[] $sections
      */
-    public function setSections(array $sections = null): void
+    public function setSections(array $sections = []): void
     {
         $this->sections = $sections;
     }

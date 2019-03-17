@@ -16,11 +16,64 @@ class OnePasswordSectionField
     protected $v;
 
     /**
-     * k = type veld
-     * n = ???? type?
-     * t = ??? vertaald?
-     * v = waarde! als deze leeg is niet meenemen.
+     * k = type
+     * n = seems like english value?
+     * t = seems translated or display-able value
+     * v = contains value.
+     *
+     * @return string
      */
+    public function __toString(): string
+    {
+        if (empty($this->getT())) {
+            return (string) $this->getV();
+        }
+
+        return sprintf('%s: %s', $this->getT(), $this->getV());
+    }
+
+    /**
+     * @return string
+     */
+    public function getT(): ?string
+    {
+        return $this->t;
+    }
+
+    /**
+     * @param string $t
+     */
+    public function setT(string $t = null): void
+    {
+        $this->t = $t;
+    }
+
+    /**
+     * @return string
+     */
+    public function getV(): ?string
+    {
+        return $this->v;
+    }
+
+    /**
+     * @param string $v
+     */
+    public function setV($v = null): void
+    {
+        switch (gettype($v)) {
+            case 'string':
+                break;
+            case 'array':
+                $v = json_encode($v);
+                break;
+            default:
+                $v = (string) $v;
+                break;
+        }
+
+        $this->v = $v;
+    }
 
     /**
      * @return string
@@ -55,22 +108,6 @@ class OnePasswordSectionField
     }
 
     /**
-     * @return string
-     */
-    public function getT(): ?string
-    {
-        return $this->t;
-    }
-
-    /**
-     * @param string $t
-     */
-    public function setT(string $t = null): void
-    {
-        $this->t = $t;
-    }
-
-    /**
      * @return array
      */
     public function getA(): array
@@ -84,32 +121,5 @@ class OnePasswordSectionField
     public function setA(array $a = []): void
     {
         $this->a = $a;
-    }
-
-    /**
-     * @return string
-     */
-    public function getV(): ?string
-    {
-        return $this->v;
-    }
-
-    /**
-     * @param string $v
-     */
-    public function setV($v = null): void
-    {
-        switch (gettype($v)) {
-            case 'string':
-                break;
-            case 'array':
-                $v = json_encode($v);
-                break;
-            default:
-                $v = (string) $v;
-                break;
-        }
-
-        $this->v = $v;
     }
 }
