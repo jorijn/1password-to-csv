@@ -2,14 +2,17 @@
 
 namespace App;
 
+use App\Factory\GenericEntryFactory;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
-class Kernel extends BaseKernel
+class Kernel extends BaseKernel implements CompilerPassInterface
 {
     use MicroKernelTrait;
 
@@ -22,6 +25,15 @@ class Kernel extends BaseKernel
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
             }
+        }
+    }
+
+    public function process(ContainerBuilder $container)
+    {
+        $factoryDefinition = $container->findDefinition(GenericEntryFactory::class);
+
+        foreach ($container->findTaggedServiceIds('generic_entry_mapper') as $id => $tags) {
+            $factoryDefinition->addMethodCall('addMapper', [new Reference($id)]);
         }
     }
 

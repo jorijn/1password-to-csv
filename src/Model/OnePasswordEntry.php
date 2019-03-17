@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: jorijn
  * Date: 3/16/19
- * Time: 6:11 PM
+ * Time: 6:11 PM.
  */
 
 namespace App\Model;
-
 
 class OnePasswordEntry
 {
@@ -61,7 +60,7 @@ class OnePasswordEntry
      */
     public function setUpdatedAt(int $updatedAt): void
     {
-        $this->updatedAt = \DateTime::createFromFormat('U', $updatedAt);;
+        $this->updatedAt = \DateTime::createFromFormat('U', $updatedAt);
     }
 
     /**

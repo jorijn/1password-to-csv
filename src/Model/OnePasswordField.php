@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: jorijn
  * Date: 3/16/19
- * Time: 6:15 PM
+ * Time: 6:15 PM.
  */
 
 namespace App\Model;
-
 
 class OnePasswordField
 {

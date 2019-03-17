@@ -25,3 +25,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Mapper\OnePasswordGenericEntryMapper:
+        class: App\Mapper\OnePasswordGenericEntryMapper
+        tags:
+            - { name: generic_entry_mapper }
